@@ -1,20 +1,28 @@
 {
-  "name": "arena-agent-mode-ad",
+  "name": "five-years-of-ai-remotion-video",
   "version": "1.0.0",
   "private": true,
-  "description": "A 15-second, code-driven Remotion advertisement for Arena.ai Agent Mode.",
+  "description": "A two-minute, narrated Remotion explainer about how AI and LLMs advanced from 2021 to 2026.",
   "scripts": {
     "dev": "remotion studio src/index.ts",
     "typecheck": "tsc --noEmit",
-    "render": "remotion render src/index.ts ArenaAgentModeCompilation out/arena-agent-mode.mp4"
+    "setup:browser": "node scripts/setup-chromium.mjs",
+    "build:timeline": "node scripts/build-timeline.mjs",
+    "build:audio": "node scripts/prepare-audio.mjs && python3 scripts/make-ambience.py",
+    "render": "remotion render src/index.ts AIFiveYears deliverables/five-years-of-ai.mp4 --codec=h264 --concurrency=2 --jpeg-quality=85",
+    "render:ad": "remotion render src/index.ts ArenaAgentModeCompilation out/arena-agent-mode.mp4"
   },
   "dependencies": {
     "@remotion/cli": "4.0.538",
+    "@remotion/fonts": "^4.0.538",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "remotion": "4.0.538"
   },
   "devDependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "@sparticuz/chromium": "^153.0.0",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "typescript": "7.0.2"

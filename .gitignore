@@ -3,3 +3,7 @@ out/
 .cache/
 .DS_Store
 *.log
+
+# Raw TTS takes are large; the tightened, committed MP3s in
+# public/audio/final are what the composition actually uses.
+public/audio/voice-*.wav
